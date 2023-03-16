@@ -44,7 +44,8 @@ router.post('/', async (req, res, next) => {
 router.put('/:courseId', async (req, res, next) => {
   const { courseId } = req.params;
   try {
-    await Course.findByIdAndUpdate(courseId, req.body, { new: true });
+    const response = await Course.findByIdAndUpdate(courseId, req.body, { new: true });
+    console.log(response)
     //res.redirect(`/courses/${courseId}`) ==> only to see on Postman if we edited right
     res.status(204).json({ message: 'OK' });
   } catch (error) {
